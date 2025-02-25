@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            background-color: #f4f4f4;
+        }
+
+        /* Navigation Bar */
+        header {
+            background-color: #333;
+            color: white;
+            padding: 15px;
+            position: fixed;
+            top: 0;
+            width: 100%;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+        }
+
+        /* Page Container */
+        .container {
+            margin-top: 80px;
+        }
+
+        /* Boxed Sections */
+        .box {
+            background: white;
+            padding: 20px;
+            margin: 20px auto;
+            width: 80%;
+            box-shadow: 0px 0px 10px gray;
+            border-radius: 10px;
+            display: none;
+        }
+
+        /* Default page is Home */
+        #home {
+            display: block;
+        }
+
+        /* Watch Display */
+        .watch {
+            background: black;
+            color: white;
+            padding: 10px;
+            display: inline-block;
+            border-radius: 10px;
+            font-size: 20px;
+        }
+
+        /* Contact Page Styles */
+        #contact {
+            background-color: #f9f9f9;
+            padding: 40px 0;
+        }
+
+        .contact-container {
+            display: flex;
+            justify-content: space-around;
+            gap: 20px;
+        }
+
+        .contact-box {
+            background-color: #ffffff;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 45%;
+        }
+
+        .contact-box h3 {
+            color: #333;
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+
+        .contact-box p {
+            color: #555;
+            margin-bottom: 20px;
+        }
+
+        .contact-box form label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .contact-box form input,
+        .contact-box form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .contact-box form .btn-submit {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .contact-box form .btn-submit:hover {
+            background-color: #45a049;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .social-icon {
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            color: white;
+            font-size: 16px;
+        }
+
+        .social-icon.facebook {
+            background-color: #3b5998;
+        }
+
+        .social-icon.twitter {
+            background-color: #00aced;
+        }
+
+        .social-icon.instagram {
+            background-color: #bc2a8d;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 15px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        footer p {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header with Navigation -->
+    <header>
+        <nav>
+            <ul>
+                <li><a href="javascript:void(0)" onclick="showPage('home')">Home</a></li>
+                <li><a href="javascript:void(0)" onclick="showPage('contact')">Contact Me</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Home Page (Default) -->
+        <section id="home" class="box">
+            <h1>Welcome to My Website</h1>
+            <p>This is the home page content.</p>
+            <div class="watch">
+                <p id="time"></p>
+                <p id="date"></p>
+            </div>
+        </section>
+
+        <!-- Contact Page -->
+        <section id="contact" class="box">
+            <h2>Contact Me</h2>
+            <div class="contact-container">
+                <div class="contact-box">
+                    <h3>Get in Touch</h3>
+                    <p>If you have any questions or feedback, feel free to reach out!</p>
+                    <form action="mailto:your-email@example.com" method="POST" enctype="text/plain">
+                        <label for="name">Your Name:</label>
+                        <input type="text" id="name" name="name" required><br><br>
+
+                        <label for="email">Your Email:</label>
+                        <input type="email" id="email" name="email" required><br><br>
+
+                        <label for="message">Your Message:</label><br>
+                        <textarea id="message" name="message" rows="4" required></textarea><br><br>
+
+                        <input type="submit" value="Send Message" class="btn-submit">
+                    </form>
+                </div>
+
+                <div class="contact-box">
+                    <h3>Social Media</h3>
+                    <p>Connect with me on social media:</p>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon facebook">Facebook</a>
+                        <a href="#" class="social-icon twitter">Twitter</a>
+                        <a href="#" class="social-icon instagram">Instagram</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Your Website</p>
+    </footer>
+
+    <script>
+        // Function to show the current time and date
+        function updateTime() {
+            let now = new Date();
+            let timeString = now.toLocaleTimeString();
+            let dateString = now.toDateString();
+            
+            document.getElementById('time').innerText = timeString;
+            document.getElementById('date').innerText = dateString;
+        }
+
+        // Update time every second
+        setInterval(updateTime, 1000);
+        updateTime();
+
+        // Function to switch between pages
+        function showPage(pageId) {
+            let sections = document.querySelectorAll('.box');
+            
+            sections.forEach(section => {
+                if (section.id === pageId) {
+                    section.style.display = "block";
+                } else {
+                    section.style.display = "none";
+                }
+            });
+        }
+    </script>
+</body>
+</html>
